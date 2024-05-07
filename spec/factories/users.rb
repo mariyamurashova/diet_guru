@@ -1,8 +1,15 @@
 FactoryBot.define do
+   sequence :email do |n|
+    "user#{n}@test.com" 
+  end
+
   factory :user do
-    name { "MyString" }
-    date { "2024-05-04 00:03:22" }
-    current_weight { 1.5 }
-    target_weight { 1.5 }
+    first_name { "Ivan" }
+    last_name { "Ivanov" }
+    email 
+    password {"111111"}
+    date_of_birth { "1990-05-04 00:03:22" }
+    current_weight { 96.0 }
+    target_weight { 85.0 }
   end
 end

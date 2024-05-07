@@ -1,0 +1,4 @@
+-if current_user.first_name && current_user.last_name
+  h2 = "#{current_user.first_name}, #{current_user.last_name}"
+else
+  h3 = link_to 'Add persanal information', edit_user_path
