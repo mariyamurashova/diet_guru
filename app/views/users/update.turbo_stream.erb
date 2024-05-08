@@ -1,0 +1,10 @@
+<% if current_user.errors %>
+  <%= turbo_stream.update "errors" do %>
+  <%= render partial: "shared/errors", locals: { resource: current_user } %>
+  <%end%>
+<% else %>
+  <%= turbo_stream.update "user_#{current_user.id}" do %>
+  <%= render partial: "users/user", locals: { user: current_user } %>
+<% end %>
+  <%end%>
+

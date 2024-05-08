@@ -1,0 +1,20 @@
+div class="input-group mb-3"
+  = form_with model: user, multipart: true,  local: false, class: "hidden", html: { id: "edit-persanal-info"}  do |form|
+    div class="input-group"
+      span class= "input-group-text" Имя и фамилия
+     
+      = form.text_area :first_name, value:current_user.first_name, class: "form-control"
+  
+      = form.text_area :last_name, value: current_user.last_name, class: "form-control" 
+    p
+    = form.label :date_of_birth
+    = form.date_field :date_of_birth, value: current_user.date_of_birth, class: "form-control" 
+    p
+    = form.label :current_weight
+    = form.number_field :current_weight, value: current_user.current_weight, class: "form-control" 
+    p 
+    = form.label :target_weight
+    = form.number_field :target_weight, value: current_user.target_weight, class: "form-control" 
+    br
+    = form.submit 'Update Persanal Info', class: "btn btn-secondary update-persanal-info-btn" 
+    br =

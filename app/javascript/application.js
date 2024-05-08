@@ -2,4 +2,17 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 
+import Rails from '@rails/ujs';
+Rails.start();
+console.log("Rails")
+
+import jquery from 'jquery'
+window.jQuery = jquery
+window.$ = jquery
+console.log("jquery")
+
+
+
 import "bootstrap"
+
+import "./custom/edit_persanal_info.js"

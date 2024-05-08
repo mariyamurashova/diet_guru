@@ -1,2 +1,5 @@
 h1 = "Welcom to Diet Guru"
-h3 = link_to "My Account", user_path(current_user)
+-if current_user
+  h3 = link_to "My Account", user_path(current_user) if current_user
+-else
+  =link_to "Please Log In", new_user_session_path
