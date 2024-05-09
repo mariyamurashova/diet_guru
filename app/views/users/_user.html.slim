@@ -1,16 +1,15 @@
-   -if user.first_name && user.last_name
+-if user.image.present?
+   =image_tag user.image, class:"img-thumbnail img-fluid", id: "user_avatar"
 
-      img id = "user_avatar" src = user.image.attachment
+h5 = "First name Last_name:"
+h2 = "#{user.first_name} #{user.last_name}"
 
-      h5 = "First name Last_name:"
-      h2 = "#{user.first_name} #{user.last_name}"
+h5 = "Date of Birth:"
+h2 = "#{current_user.date_of_birth.strftime('%d.%m.%Y')}"
 
-      h5 = "Date of Birth:"
-      h2 = "#{current_user.date_of_birth.strftime('%d.%m.%Y')}"
+h5 = "Current Weight:"
+h2 = "#{current_user.current_weight}"
 
-      h5 = "Current Weight:"
-      h2 = "#{current_user.current_weight}"
-
-      h5 = "Target Weight:"
-      h2 = "#{current_user.target_weight}"
+h5 = "Target Weight:"
+h2 = "#{current_user.target_weight}"
 
