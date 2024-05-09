@@ -1,4 +1,4 @@
-<% if current_user.errors %>
+<% if !current_user.errors.empty? %>
   <%= turbo_stream.update "errors" do %>
   <%= render partial: "shared/errors", locals: { resource: current_user } %>
   <%end%>

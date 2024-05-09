@@ -34,3 +34,7 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 /config/database.yml
+.DS_Store
+.byebug_history
+!/.rdb*
+/dump.rdb

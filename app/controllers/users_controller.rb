@@ -9,12 +9,9 @@ class UsersController < ApplicationController
   def update
     current_user.update(user_params)
       respond_to do |format| 
+        format.html { redirect_to user_path(current_user), notice: "Persanal info was succesfully updated." }
         format.turbo_stream 
-    # format.json  {render json: { text: "your persanal information was succesfully updated", partial: 'users/user'} }
       end
-    #else
-     # render json: current_user.errors.full_messages, status: :unprocesseble_intinity
-    #end
   end
 
   private

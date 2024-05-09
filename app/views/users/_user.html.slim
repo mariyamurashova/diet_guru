@@ -3,7 +3,7 @@
       h2 = "#{user.first_name} #{user.last_name}"
 
       h5 = "Date of Birth:"
-      h2 = "#{current_user.date_of_birth}"
+      h2 = "#{current_user.date_of_birth.strftime('%d.%m.%Y')}"
 
       h5 = "Current Weight:"
       h2 = "#{current_user.current_weight}"
