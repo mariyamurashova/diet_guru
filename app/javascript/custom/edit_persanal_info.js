@@ -1,6 +1,6 @@
 import $ from "jquery";
 $(document).ready(function(){
-  $('.user_accaunt').on('click', '.edit-persanal-info-link', function(e){
+  $('.user_account').on('click', '.edit-persanal-info-link', function(e){
     console.log("edit persanal info")
     e.preventDefault();
     $(this).addClass('hidden');

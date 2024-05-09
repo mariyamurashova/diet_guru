@@ -8,10 +8,13 @@ feature 'User can edit persanal information', %q{
 
   given(:user) { create(:user) }
 
-  scenario 'User edit persanal information with valid attributes' do
+  background do
     sign_in(user)
     click_on 'My Account'
     click_on 'Edit persanal information'
+  end
+
+  scenario 'User edit persanal information with valid attributes' do
 
     page.find(:css, "#user_first_name").set('Petr')
     page.find(:css, "#user_last_name").set('Petrov')
@@ -27,10 +30,10 @@ feature 'User can edit persanal information', %q{
    
   end
 
-   scenario 'User log in to his account without the added persanal information' do
-    #sign_in(user)
-    #click_on 'My Account'
-
-    #expect(page).to have_content("Add persanal information")
+  scenario 'User can attach avatar to his account' do
+    attach_file 'Image', "#{Rails.root}/spec/fixtures/avatar.jpg"
+    click_on 'Update Persanal Info'
+   byebug
+     expect(page.find('#user_avatar')['src']).to eq("#{user.image.attachment}")
   end
 end

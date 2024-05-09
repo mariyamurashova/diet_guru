@@ -2,6 +2,10 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 
+//import * as ActiveStorage from '@rails/activestorage'
+//ActiveStorage.start()
+//console.log("ActiveStorage")
+
 import Rails from '@rails/ujs';
 Rails.start();
 console.log("Rails")
@@ -10,7 +14,6 @@ import jquery from 'jquery'
 window.jQuery = jquery
 window.$ = jquery
 console.log("jquery")
-
 
 
 import "bootstrap"
