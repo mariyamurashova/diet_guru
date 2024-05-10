@@ -5,11 +5,17 @@ $(document).ready(function(){
     e.preventDefault();
     $(this).addClass('hidden');
     $('form#edit-persanal-info').removeClass('hidden');
+    $('#delete_photo_link').removeClass('hidden');
+  })
+
+  .on('click', '#delete_photo_link', function(e){
+    $('#user_avatar').hide();
   })
 
 
   .on('click', '.update-persanal-info-btn', function(e){
-    $('form#edit-persanal-info').hide();
+    $('form#edit-persanal-info').addClass('hidden');
+    $('#delete_photo_link').addClass('hidden');
     $('.edit-persanal-info-link').removeClass('hidden');
   })
 

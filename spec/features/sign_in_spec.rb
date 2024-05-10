@@ -7,7 +7,7 @@ feature 'User can sign in', %q{
 } do
 
   scenario 'Registred user tries to sign in' do
-    User.create!(email: 'ivanov@test.com', password: '111111')
+    User.create!(email: 'ivanov@test.com', password: '111111', date_of_birth: Time.now)
     
     visit new_user_session_path
     fill_in 'Email', with: 'ivanov@test.com'

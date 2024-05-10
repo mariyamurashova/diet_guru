@@ -1,14 +1,22 @@
-.user_account
-  = turbo_stream_from "user_account"
+.container-fluid
+  .user_account
+    div class = "row"
+      div class = "col"
+        = turbo_stream_from "user_account"
 
-  = turbo_frame_tag "user_#{current_user.id}"
+        = turbo_frame_tag "user_#{current_user.id}"
 
-    =render 'users/user', user: current_user
+          =render 'users/user', user: current_user
 
-      
-  h3 = link_to 'Edit persanal information', '#', class: 'edit-persanal-info-link'
+   
+        div class = "row"   
+          h3 = link_to 'Edit persanal information', '#', class: 'edit-persanal-info-link'
 
-  = turbo_frame_tag "form_turbo_frame" 
+          = turbo_frame_tag "form_turbo_frame"
+            -if current_user.image.present?
+              = link_to "Delete Photo", image_path(current_user.image), method: :delete, data: {  confirm: ('Are you sure?'), remote: true }, class: "hidden", id: "delete_photo_link" 
 
-    = render 'users/edit_form', user: current_user
+            = render 'users/edit_form', user: current_user
+
+            
 

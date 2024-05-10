@@ -7,4 +7,5 @@ RSpec.describe User, type: :model do
   it 'have one attached image' do
     expect(User.new.image).to be_an_instance_of(ActiveStorage::Attached::One)
   end
+
 end

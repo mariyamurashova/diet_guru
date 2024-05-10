@@ -25,8 +25,7 @@ feature 'User can edit persanal information', %q{
     expect(page).to have_content("Petr Petrov")
     expect(page).to have_content("24.08.1997")
     expect(page).to have_content("86.0")
-    expect(page).to have_content("80.0")
-   
+    expect(page).to have_content("80.0")  
   end
 
   scenario 'User can attach avatar to his account' do
@@ -34,13 +33,13 @@ feature 'User can edit persanal information', %q{
     click_on 'Update Persanal Info'
 
     expect(page).to have_xpath("//img[contains(@src, \"avatar.jpg\")]")
-
   end
 
   scenario 'User can delete attached file' do
-    click_on 'Delete photo'
-    page.driver.browser.switch_to.alert.accept
-
+    attach_file 'Image', "#{Rails.root}/spec/fixtures/avatar.jpg"
+    click_on 'Update Persanal Info'
+    click_on 'Edit persanal information'
+    click_on 'Delete Photo'
 
     expect(page).to_not have_xpath("//img[contains(@src, \"avatar.jpg\")]")
   end

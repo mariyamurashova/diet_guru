@@ -1,11 +1,9 @@
 div class="input-group mb-3"
+
   = form_with model: user, multipart: true,  local: false, class: "hidden", html: { id: "edit-persanal-info"}  do |form|
-    -if user.image.attached?
-      img src = user.image
-    br
   
     = form.label :image
-    = form.file_field :image
+    = form.file_field :image, class: "form-control"
 
     = form.label :first_name
      
