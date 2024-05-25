@@ -1,0 +1,27 @@
+div class="input-group mb-3"
+
+  = form_with model: product, multipart: true, class: "hidden",  local: false, html: { id: "add-new-product"}  do |form|
+  
+    = form.label :title
+     
+    = form.text_area :title, class: "form-control"
+
+    = form.label :brand_name
+  
+    = form.text_area :brand_name,  class: "form-control" 
+    p
+    = form.label :calorie
+    = form.number_field :calorie, class: "form-control" 
+    p
+    = form.label :protein
+    = form.number_field :protein,  class: "form-control" 
+    p 
+    = form.label :fat
+    = form.number_field :fat, class: "form-control" 
+
+    p 
+    = form.label :carbohydrate
+    = form.number_field :carbohydrate, class: "form-control" 
+    br
+    = form.submit 'Save', class: "btn btn-secondary add-new-product-btn" 
+    br =

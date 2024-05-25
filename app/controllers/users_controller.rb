@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
 
   def index
   end
 
   def show
+    @product = Product.new
   end
 
   def update

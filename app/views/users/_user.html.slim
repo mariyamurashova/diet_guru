@@ -2,15 +2,17 @@
    div class = "col-2"
       =image_tag user.image, class:"img-thumbnail img-fluid rounded float-start", id: "user_avatar"
 div class = "col"
-   h5 = "First name Last_name:"
-   h2 = "#{user.first_name} #{user.last_name}"
+  h5 = "First name Last_name:"
+ 
+  h2 = "#{user.first_name} #{user.last_name}" if user.first_name.present? && user.last_name.present?
 
-   h5 = "Date of Birth:"
-   h2 = "#{user.date_of_birth.strftime('%d.%m.%Y')}" if user.date_of_birth.present?
+  h5 = "Date of Birth:"
+  h2 = "#{user.date_of_birth.strftime('%d.%m.%Y')}" if user.date_of_birth.present?
 
-   h5 = "Current Weight:"
-   h2 = "#{current_user.current_weight}"
+  h5 = "Current Weight:"
+    
+  h2 = "#{user.current_weight}" if user.current_weight.present?
 
-   h5 = "Target Weight:"
-   h2 = "#{current_user.target_weight}"
+  h5 = "Target Weight:"
+  h2 = "#{user.target_weight}" if user.target_weight.present?
 

@@ -19,3 +19,4 @@ console.log("jquery")
 import "bootstrap"
 
 import "./custom/edit_persanal_info.js"
+import "./custom/add_new_product.js"

@@ -3,7 +3,7 @@
     div class = "row"
       div class = "col"
         = turbo_stream_from "user_account"
-
+        
         = turbo_frame_tag "user_#{current_user.id}"
 
           =render 'users/user', user: current_user
@@ -15,8 +15,12 @@
           = turbo_frame_tag "form_turbo_frame"
             -if current_user.image.present?
               = link_to "Delete Photo", image_path(current_user.image), method: :delete, data: {  confirm: ('Are you sure?'), remote: true }, class: "hidden", id: "delete_photo_link" 
+         
+          div class = "row"   
+            h3 = link_to 'Add new product', '#', class: 'add-new-product-link'
 
             = render 'users/edit_form', user: current_user
+            = render 'products/form', product: @product
 
             
 
