@@ -7,7 +7,7 @@ class CreateProducts < ActiveRecord::Migration[7.1]
       t.integer :protein
       t.integer :fat
       t.integer :carbohydrate
-
+      t.belongs_to :dish, foreign_key: true
       t.timestamps
     end
   end

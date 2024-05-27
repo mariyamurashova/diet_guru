@@ -10,13 +10,24 @@ import Rails from '@rails/ujs';
 Rails.start();
 console.log("Rails")
 
+import Cocooned from '@notus.sh/cocooned'
+Cocooned.start()
+console.log("Cocooned")
+
+
 import jquery from 'jquery'
 window.jQuery = jquery
 window.$ = jquery
 console.log("jquery")
+
+import "select2";
+console.log("select2")
+
 
 
 import "bootstrap"
 
 import "./custom/edit_persanal_info.js"
 import "./custom/add_new_product.js"
+import "./custom/search_util.js"
+import "./custom/add_ingridient.js"

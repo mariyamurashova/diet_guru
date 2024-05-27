@@ -18,9 +18,11 @@
          
           div class = "row"   
             h3 = link_to 'Add new product', '#', class: 'add-new-product-link'
+            h3 = link_to 'Add new dish', '#', class: 'add-new-dish-link'
 
             = render 'users/edit_form', user: current_user
             = render 'products/form', product: @product
+            = render 'dishes/form', dish: @dish
 
             
 

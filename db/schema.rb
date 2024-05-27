@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_25_044234) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_27_142959) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,32 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_25_044234) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "dish_ingredients", force: :cascade do |t|
+    t.float "weight"
+    t.bigint "dish_id", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dish_id"], name: "index_dish_ingredients_on_dish_id"
+    t.index ["product_id"], name: "index_dish_ingredients_on_product_id"
+  end
+
+  create_table "dishes", force: :cascade do |t|
+    t.string "title"
+    t.integer "number_of_servings"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pg_search_documents", force: :cascade do |t|
+    t.text "content"
+    t.string "searchable_type"
+    t.bigint "searchable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "title"
     t.string "brand_name"
@@ -49,8 +75,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_25_044234) do
     t.integer "protein"
     t.integer "fat"
     t.integer "carbohydrate"
+    t.bigint "dish_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["dish_id"], name: "index_products_on_dish_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -72,4 +100,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_25_044234) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "dish_ingredients", "dishes"
+  add_foreign_key "dish_ingredients", "products"
+  add_foreign_key "products", "dishes"
 end
