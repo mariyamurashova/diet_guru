@@ -23,7 +23,7 @@ feature 'User can add product', %q{
     end
 
     scenario 'adds a product' do 
-      click_on 'Save'
+      click_on 'Save Product'
       expect(page).to have_content 'the new product has been successfully created'
     end
 

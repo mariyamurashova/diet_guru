@@ -3,6 +3,7 @@ class CreateDishes < ActiveRecord::Migration[7.1]
     create_table :dishes do |t|
       t.string :title
       t.integer :number_of_servings
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end

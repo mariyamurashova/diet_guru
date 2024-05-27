@@ -1,7 +1,7 @@
 = cocooned_item do
   .nested-fields
     = f.label  "Ingridient:", class: "form-control"
-    = f.select :product,   Product.render_title, class: "form-control"
+    = f.select :product_id,   Product.render_title, class: "form-control"
 
     = f.label :weight, class: "form-control"
     = f.number_field :weight, class: "form-control"

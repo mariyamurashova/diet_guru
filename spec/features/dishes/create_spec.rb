@@ -14,9 +14,9 @@ feature 'User can add product', %q{
       click_on "My Account"
       click_on "Add new product"
    
-      fill_in 'Title', with: 'product_title'
-      fill_in 'Тumber of servings', with: '2'
-      fill_in 'Ingridient', with: 'chicken'
+      fill_in 'Dish Title', with: 'Dish_title'
+      fill_in 'Number of servings', with: '2'
+      fill_in 'Ingredient', with: 'chicken'
       fill_in 'Weight', with: '100'
       click_on 'Add Ingridient'
 
