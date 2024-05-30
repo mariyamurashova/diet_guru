@@ -1,10 +1,10 @@
-div class="input-group mb-3"
+div class="input-group mb-3 products_form"
 
   = form_with model: product, multipart: true, class: "hidden",  local: false, html: { id: "add-new-product"}  do |form|
   
-    = form.label :title
+    = form.label :title, "Title"
      
-    = form.text_area :title, class: "form-control"
+    = form.text_area :title,  class: "form-control"
 
     = form.label :brand_name
   

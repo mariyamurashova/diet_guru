@@ -14,7 +14,7 @@ feature 'User can edit persanal information', %q{
     click_on 'Edit persanal information'
   end
 
-  scenario 'User edit persanal information with valid attributes' do
+  scenario 'User edit persanal information with valid attributes', js:true do
     page.find(:css, "#user_first_name").set('Petr')
     page.find(:css, "#user_last_name").set('Petrov')
     page.find(:css, "#user_date_of_birth").set('24.08.1997')
@@ -28,18 +28,20 @@ feature 'User can edit persanal information', %q{
     expect(page).to have_content("80.0")  
   end
 
-  scenario 'User can attach avatar to his account' do
+  scenario 'User can attach avatar to his account', js:true do
     attach_file 'Image', "#{Rails.root}/spec/fixtures/avatar.jpg"
     click_on 'Update Persanal Info'
 
     expect(page).to have_xpath("//img[contains(@src, \"avatar.jpg\")]")
   end
 
-  scenario 'User can delete attached file' do
+  scenario 'User can delete attached file', js:true do
     attach_file 'Image', "#{Rails.root}/spec/fixtures/avatar.jpg"
     click_on 'Update Persanal Info'
     click_on 'Edit persanal information'
     click_on 'Delete Photo'
+    page.driver.browser.switch_to.alert.accept
+
 
     expect(page).to_not have_xpath("//img[contains(@src, \"avatar.jpg\")]")
   end

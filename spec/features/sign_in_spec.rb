@@ -14,8 +14,7 @@ feature 'User can sign in', %q{
     fill_in 'Password', with: '111111'
     click_on 'Log in'
     
-    expect(page).to have_content 'Signed in successfully.'
-  
+    expect(page).to have_content 'Signed in successfully.' 
   end
 
   scenario 'Unregistred user tries to sign in' do

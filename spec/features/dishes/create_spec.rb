@@ -1,35 +1,51 @@
 require 'rails_helper'
 
-feature 'User can add product', %q{
-  In order to create menu or a dish
+feature 'User can add new dish', %q{
+  In order to create menu 
   As an authenticated user
-  I'd like to be able to add new product
+  I'd like to be able to add new dish
 } do
 
   given(:user) { create(:user) }
+  given!(:products) { create_list(:product, 3) }
 
-  describe 'Authenticated user' do 
+   describe 'Authenticated user' do 
     background do
       sign_in(user)
       click_on "My Account"
-      click_on "Add new product"
-   
-      fill_in 'Dish Title', with: 'Dish_title'
-      fill_in 'Number of servings', with: '2'
-      fill_in 'Ingredient', with: 'chicken'
-      fill_in 'Weight', with: '100'
-      click_on 'Add Ingridient'
-
-      fill_in 'Ingridient', with: 'onion'
-      fill_in 'Weight', with: '100'
+      click_on "Add new dish"
     end
 
-    scenario 'adds a dish' do 
+    scenario 'create a dish with valid attributes', js:true do 
+      within ".dishes_form" do
+        fill_in "Dish Title", with: 'My dish'
+        fill_in 'Number of servings', with: '2'
+        click_on 'add ingredient'
+
+        within ".nested-fields" do
+          select("#{products[0].title}", from: "select_ingredient")
+          fill_in 'Weight', with: '100'
+        end
+      end
       click_on 'Save'
-      expect(page).to have_content 'the new dish has been successfully created'
+
+      within ".user_dishes" do
+        expect(page).to have_content 'My dish'
+      end
     end
 
-    scenario "doesn't add a product" do 
+    scenario "tries to create dish with invalid attributes", js:true do 
+       within ".dishes_form" do
+        fill_in "Dish Title", with: ''
+        fill_in 'Number of servings', with: '2'
+        click_on 'add ingredient'
+        click_on 'Save'
+      end
+
+       within ".errors" do
+        expect(page).to have_content "Title can't be blank"
+      end
     end
   end
 end
+

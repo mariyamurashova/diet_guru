@@ -2,10 +2,11 @@ class DishesController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @dish = Dish.create(dish_params)
-  
+    @dish = Dish.new(dish_params)
+    @dish.user = current_user
+
     if @dish.save
-      render json: { text: "the new dish has been successfully created"}, status: :created
+      render json: {dish: @dish.title, text: "the new dish has been successfully created"}, status: :created
     else
       render json: @dish.errors.full_messages, status: :bad_request
     end

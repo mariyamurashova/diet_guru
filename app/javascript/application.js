@@ -20,8 +20,8 @@ window.jQuery = jquery
 window.$ = jquery
 console.log("jquery")
 
-import "select2";
-console.log("select2")
+//import "select2";
+//console.log("select2")
 
 
 
@@ -29,5 +29,5 @@ import "bootstrap"
 
 import "./custom/edit_persanal_info.js"
 import "./custom/add_new_product.js"
-import "./custom/search_util.js"
-import "./custom/add_ingridient.js"
+//import "./custom/search_util.js"
+import "./custom/add_new_dish.js"

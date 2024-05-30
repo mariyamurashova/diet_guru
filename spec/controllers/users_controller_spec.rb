@@ -9,13 +9,13 @@ RSpec.describe UsersController, type: :controller do
 
     context 'with valid attributes' do 
       it "changes user's attributes" do
-        patch :update, params: { id: user, user: {first_name: 'Petr', last_name: 'Petrov', date_of_birth: '21.04.1997', current_weight: 86, target_weight: 80} }, format: :turbo_stream 
+        patch :update, params: { id: user, user: {first_name: 'Petr', last_name: 'Petrov', date_of_birth: '21.04.1997', current_weight: 86, target_weight: 80} }, format: :js
         user.reload
         expect(user.first_name).to eq 'Petr'
       end
 
       it 'returns status 200 OK' do
-        patch :update, params: { id: user, user: {first_name: 'Petr', last_name: 'Petrov', date_of_birth: '21.04.1997', current_weight: 86, target_weight: 80} }, format: :turbo_stream 
+        patch :update, params: { id: user, user: {first_name: 'Petr', last_name: 'Petrov', date_of_birth: '21.04.1997', current_weight: 86, target_weight: 80} }, format: :js 
         expect(response).to have_http_status(200)
       end
     end
