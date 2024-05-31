@@ -1,0 +1,39 @@
+h1 = "#{@dish.title} information:"
+
+h3 = "Number of servings: #{@dish.number_of_servings}"
+
+table.table.table-bordered
+  thead
+    tr
+      th scope="col" #
+      th scope="col" Product
+      th scope="col" Weight
+      th scope="col" Protein
+      th scope="col" Fat
+      th scope="col" Carbohydrate
+      th scope="col" Calories
+  
+
+  tbody
+    - @energy_value.ingredients_info.each do |ingredient|
+      tr
+        th scope="row" 
+      
+        td #{ingredient[0]}
+        td #{ingredient[1][:weight]}
+        td #{ingredient[1][:proteins]}
+        td #{ingredient[1][:fats]}
+        td #{ingredient[1][:carbohydrates]}
+        td #{ingredient[1][:calories]}
+      
+    tr
+      th scope="row" 
+      td Total for 1 serving
+      td 
+      td #{@energy_value.totals[:total_proteins]}
+      td #{@energy_value.totals[:total_fats]}
+      td #{ @energy_value.totals[:total_carbohydrates]}
+      td #{@energy_value.totals[:total_calories]}
+
+div class = "hidden edit-dish-form"
+  /= render 'dishes/form', dish: @dish

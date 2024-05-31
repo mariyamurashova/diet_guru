@@ -12,6 +12,12 @@ class DishesController < ApplicationController
     end
   end
 
+  def show
+    @dish = Dish.find(params[:id])
+    @energy_value = EnergyValueService.new(@dish)
+    @energy_value.calculate
+  end
+
   private
 
   def dish_params

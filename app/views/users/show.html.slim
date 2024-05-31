@@ -18,7 +18,11 @@
         .user_dishes
           h3 = "Your recepies:"
           -@dishes.each do |dish|
-             li = link_to dish.title, '#', class: 'dish_info'
+            .dish_info_links
+              li = link_to dish.title, dish_path(dish), remote: true, data: {dish_id: dish.id}, class: "dish_#{dish.id}_info"
+
+          div class = "dish_show_view hidden"
+           / =render 'dishes/dish', dish: @dish
         
         = render 'users/edit_form', user: current_user
 
