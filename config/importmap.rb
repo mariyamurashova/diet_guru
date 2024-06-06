@@ -17,3 +17,4 @@ pin_all_from 'app/javascript/custom', under: 'custom'
 #pin "@rails/activestorage", to: "https://ga.jspm.io/npm:@rails/activestorage@7.1.2/app/assets/javascripts/activestorage.esm.js"
 #pin "select2", to: "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"
 
+#pin "@nathanvda/cocoon", to: "@nathanvda--cocoon.js" # @1.2.14

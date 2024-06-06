@@ -27,8 +27,10 @@
         = render 'users/edit_form', user: current_user
 
         = render 'products/form', product: @product
-    
-        = render 'dishes/form', dish: @dish
+        div class ="create_dish_form hidden"
+          = render 'dishes/form', dish: @dish
+
+
 
             
 

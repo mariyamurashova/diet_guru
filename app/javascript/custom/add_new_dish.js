@@ -4,7 +4,7 @@ $(document).ready(function(){
     console.log("add new dish")
     e.preventDefault();
     $(this).addClass('hidden');
-    $('form#add-new-dish').removeClass('hidden');
+    $('.create_dish_form').removeClass('hidden');
   })
 
   .on('click', '.add-new-dish-btn', function(e){

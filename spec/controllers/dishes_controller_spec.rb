@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe DishesController, type: :controller do
   let(:user) { create(:user) }
+  let!(:dish) { create(:dish, user: user) }
+  
    describe 'POST #create' do 
 
     context 'Authenticated user' do
@@ -31,6 +33,25 @@ RSpec.describe DishesController, type: :controller do
       end
     end
 
+    describe 'GET #show' do
+      before do 
+        login(user) 
+        get :show, params: {id: dish}, xhr: true
+      end
+
+      it 'assigns the requested dish to @dish' do  
+        expect(assigns(:dish)).to eq dish
+      end
+
+     it 'calls EnergyValueService' do
+      allow( assigns(:energy_value)).to receive(:calculate)
+      end
+
+      it 'returns successful status' do  
+        expect(response).to have_http_status(:successful)
+      end
+    end
+    
     context 'Unauthenticated user' do
 
       it "doesn't save the answer" do 

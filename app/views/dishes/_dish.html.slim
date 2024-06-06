@@ -35,5 +35,6 @@ table.table.table-bordered
       td #{ @energy_value.totals[:total_carbohydrates]}
       td #{@energy_value.totals[:total_calories]}
 
-div class = "hidden edit-dish-form"
-  /= render 'dishes/form', dish: @dish
+h3 = link_to 'Edit', '#', class: 'edit-dish-link'
+div class="edit_dish_form hidden"
+  = render 'dishes/form', dish: @dish

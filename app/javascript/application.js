@@ -26,9 +26,8 @@ console.log("jquery")
 
 
 import "bootstrap"
-
 import "./custom/edit_persanal_info.js"
 import "./custom/add_new_product.js"
 //import "./custom/search_util.js"
 import "./custom/add_new_dish.js"
-//import "./custom/edit_dish.js"
+import "./custom/edit_dish.js"

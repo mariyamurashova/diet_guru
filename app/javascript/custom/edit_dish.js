@@ -1,9 +1,9 @@
 import $ from "jquery";
 $(document).ready(function(){
-  $('.user_account').on('click', '.dish_info_links', function(e){
+  $('.user_account').on('click', '.edit-dish-link', function(e){
     console.log("dish info")
     e.preventDefault();
     $(this).addClass('hidden');
-    $('.dish_show_view').removeClass('hidden');
+    $('.edit_dish_form').removeClass('hidden');
   })
 })
