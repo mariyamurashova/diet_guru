@@ -1,6 +1,6 @@
 import $ from "jquery";
 $(document).ready(function(){
-  $('.user_account').on('click', '.edit-dish-link', function(e){
+  $('.dish_info').on('click', '.dish_edit_link', function(e){
     console.log("dish info")
     e.preventDefault();
     $(this).addClass('hidden');

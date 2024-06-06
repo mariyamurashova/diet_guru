@@ -1,6 +1,6 @@
 div class="input-group mb-3 dishes_form"
 
-  = form_with model: @dish, multipart: true, local: false, html: { id: "add-new-dish"}  do |form|
+  = form_with model: dish, multipart: true, local: false, html: { id: "add-new-dish"}  do |form|
     = form.label :title  
     = form.text_area :title, class: "form-control" 
 

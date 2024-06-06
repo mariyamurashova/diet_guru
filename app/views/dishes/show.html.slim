@@ -1,0 +1,7 @@
+//$('.user_dishes').html('<%= j render "dishes/dish",  locals: { dish: @dish} %> <%= j render "dishes/form",  locals: { dish: @dish}%>')
+
+.dish_info
+  = render "dish"
+  div class ="edit_dish_form hidden"
+    =render 'dishes/form', dish: @dish
+
