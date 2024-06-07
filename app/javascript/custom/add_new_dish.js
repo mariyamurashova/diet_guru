@@ -1,10 +1,11 @@
 import $ from "jquery";
 $(document).ready(function(){
-  $('.user_account').on('click', '.add-new-dish-link', function(e){
-    console.log("add new dish")
+$('.user_account').on('click', '.add-new-dish-link', function(e){
+   
     e.preventDefault();
     $(this).addClass('hidden');
-    $('.create_dish_form').removeClass('hidden');
+    $('form#add-new-dish').removeClass('hidden');
+    console.log("add new dish")
   })
 
   .on('click', '.add-new-dish-btn', function(e){
@@ -12,9 +13,8 @@ $(document).ready(function(){
     $('.add-new-dish-link').removeClass('hidden');
     console.log(e.detail[0])
     render_message(e.detail[0]);
-  
   })
-
+  
   .on('ajax:success', function(e) { 
     $('form#add-new-dish').addClass('hidden');
     append_dish_link(e.detail[0]['dish'])
@@ -23,7 +23,8 @@ $(document).ready(function(){
   
   .on('ajax:error', function(e) { 
      render_errors(e.detail[0]);
-    })
+    
+   })
 
   function render_message(message) {
     $('.notice').html(" ");
@@ -41,14 +42,11 @@ $(document).ready(function(){
   }
 
   function append_dish_link(dish_title) {
-   let aTag = document.createElement('a');
+    let aTag = document.createElement('a'); 
+    aTag.innerHTML='<li>'+dish_title +'</li>';
 
-    
-  aTag.innerHTML='<li>'+dish_title +'</li>';
-
-  aTag.href=dish_title;
-  //aTag.title="search results";
-  $('.user_dishes').append(aTag);
+    aTag.href=dish_title;
+    $('.user_dishes').append(aTag);
   }
 
 });

@@ -35,11 +35,10 @@ table.table.table-bordered
       td #{ @energy_value.totals[:total_carbohydrates]}
       td #{@energy_value.totals[:total_calories]}
 
-/= link_to "Edit", "#",  class: "dish_edit_link"
 = link_to "edit", dish_path(@dish), remote: true,  data: {dish_id: @dish.id}, class: "dish_edit_link"
 
-/div class ="edit_dish_form hidden"
- / =render 'dishes/form', dish: @dish
+
+=render 'dishes/form', dish: @dish
 
 
 

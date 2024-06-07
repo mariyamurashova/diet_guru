@@ -15,19 +15,19 @@ class DishesController < ApplicationController
 
   def show
     @dish = Dish.find(params[:id])
-    @energy_value = EnergyValueService.new(@dish)
-    @energy_value.calculate
+    call_energy_value_service
   end
 
   def update
-    if @dish.update(dish_params)
-      render json: {dish: @dish.title, text: "the dish has been successfully updated"}, status: :created
-    else
-      render json: @dish.errors.full_messages, status: :bad_request
-    end
+    call_energy_value_service if @dish.update(dish_params)
   end
 
   private
+
+  def call_energy_value_service
+    @energy_value = EnergyValueService.new(@dish)
+    @energy_value.calculate
+  end
 
   def find_dish
     @dish = Dish.find(params[:id])

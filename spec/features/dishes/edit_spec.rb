@@ -11,44 +11,63 @@ feature "User can edit dishes's information", %q{
   given!(:product) { create(:product) }
   given!(:dish) { create(:dish, user: user) }
   given!(:dish_ingredient) { create(:dish_ingredient, dish: dish, product: product, weight: 100) }
-
-
+ 
    describe 'Authenticated user' do 
     background do
       sign_in(user)
-      click_on "My Account"
-    end
-
-  scenario 'can view recipes', js:true do
+      click_on "My Account" 
       within '.user_dishes' do
         click_on "#{dish.title}"
       end
+    end
 
+    scenario 'can view recipes with energy value information', js:true do
+     
       expect(page).to have_content ("#{dish.title} information:")
+      expect(page).to have_content ("#{product.protein}")
+      expect(page).to have_content ("#{product.fat}")
+      expect(page).to have_content ("#{product.carbohydrate}")
     end
-  end
 
-  scenario "the dish's author can edit receipe", js:true do
-    click_on "#{dish.title}"
-    click_on "Edit"
 
-    within ".dishes_form" do
-      fill_in "Dish Title", with: 'My dish'
-      fill_in 'Number of servings', with: '2'
-      click_on 'add ingredient'
-
-      within ".nested-fields" do
-        select("#{products[0].title}", from: "select_ingredient")
-        fill_in 'Weight', with: '100'
+    scenario "the dish's author edit receipe with valid attributes", js:true do
+   
+      within '.dish_info' do
+        click_on "edit"
       end
-    end
+
+      within ".dishes_form" do
+        fill_in "Title", with: 'My dish'
+        fill_in 'Number of servings', with: '2'
+      end
       click_on 'Save'
 
-      within ".user_dishes" do
-        expect(page).to have_content 'Your receipe was successfully updated'
+      within ".notice" do
+         expect(page).to have_content 'the dish has been successfully updated'
+      end
+      within ".dish_info" do   
+        expect(page).to have_content ("My dish information:")
+      end
+    end
+
+   scenario "the dish's author tries to edit receipe with invalid attributes", js:true do
+   
+      within '.dish_info' do
+        click_on "edit"
       end
 
+      within ".dishes_form" do
+        fill_in "Title", with: ''
+        fill_in 'Number of servings', with: '2'
+      end
+      click_on 'Save'
 
+      within ".errors" do
+        expect(page).to have_content "Title can't be blank"
+      end
+      within ".dish_info" do   
+        expect(page).to have_content ("#{dish.title} information:")
+      end
+    end
   end
-
 end

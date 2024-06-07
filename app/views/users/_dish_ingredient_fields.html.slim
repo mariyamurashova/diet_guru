@@ -1,5 +1,5 @@
 = cocooned_item do
-  .nested-fields
+  .nested-fields_create
     = f.select :product_id, Product.render_title, {:include_blank => 'Choose Ingredient'}, class: "form-control", id: "select_ingredient"
     = f.label :weight, class: "ingredient-weight form-control"
     = f.number_field :weight, class: "form-control"

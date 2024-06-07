@@ -1,2 +1,7 @@
-$('.errors').html('<%= render 'shared/errors', resource: @dish %>');
-$(".dish_info").html("<%=  j render @dish %>")
+<% if @dish.errors.present? %>
+    $('.errors').html('<%= render 'shared/errors', resource: @dish %>');
+<%else%>
+    $('.notice').append('<%= "the dish has been successfully updated"%>');
+    $(".dish_info").html("<%=  j render @dish %>")
+    $('.edit_dish_form').addClass('hidden');
+<%end%>

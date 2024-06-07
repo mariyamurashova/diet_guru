@@ -4,6 +4,6 @@ $(document).ready(function(){
     console.log("dish info")
     e.preventDefault();
     $(this).addClass('hidden');
-    $('.edit_dish_form').removeClass('hidden');
+    $('form#add-new-dish').removeClass('hidden');
   })
 })
