@@ -1,6 +1,6 @@
 class DishesController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_dish, only: [:show, :update]
+  before_action :find_dish, only: [:show, :update, :destroy]
 
   def create
     @dish = Dish.new(dish_params)
@@ -20,6 +20,13 @@ class DishesController < ApplicationController
 
   def update
     call_energy_value_service if @dish.update(dish_params)
+  end
+
+  def destroy
+    if @dish.destroy! 
+      redirect_to user_path(current_user)
+      flash[:notice] = "The dish was successfully deleted"
+    end
   end
 
   private

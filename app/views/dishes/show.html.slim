@@ -1,5 +1,7 @@
 .dish_info
   = render "dish"
+  =link_to "Delete the Dish",  @dish, method: :delete, data: { confirm: ('Are you sure?') }
+
   div class ="edit_dish_form hidden"
     =render 'dishes/form', dish: @dish
 

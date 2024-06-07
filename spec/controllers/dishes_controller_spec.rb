@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe DishesController, type: :controller do
-  let(:user) { create(:user) }
+  let!(:user) { create(:user) }
   let!(:dish) { create(:dish, user: user) }
   
    describe 'POST #create' do 
@@ -36,7 +36,7 @@ RSpec.describe DishesController, type: :controller do
     describe 'GET #show' do
       before do 
         login(user) 
-        get :show, params: {id: dish}, xhr: true
+        get :show, params: {id: dish}
       end
 
       it 'assigns the requested dish to @dish' do  
@@ -47,8 +47,8 @@ RSpec.describe DishesController, type: :controller do
       allow( assigns(:energy_value)).to receive(:calculate)
       end
 
-      it 'returns successful status' do  
-        expect(response).to have_http_status(:successful)
+      it 'redirects to show view' do  
+       expect(response).to render_template :show
       end
     end
     
@@ -61,6 +61,18 @@ RSpec.describe DishesController, type: :controller do
       it 'redirects to sign in' do  
           post :create, params: { dish: attributes_for(:dish), format: :json }
         expect(response).to have_http_status(:unauthorized)
+      end
+    end
+  end
+
+
+  describe 'DELETE #destroy' do 
+
+    context 'owner delete his answer' do
+      before { login(user) }
+     
+      it "deletes the dish" do 
+        expect { delete :destroy, params: { id: dish } }.to change(Dish, :count).by(-1)
       end
     end
   end
