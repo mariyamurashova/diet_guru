@@ -1,0 +1,7 @@
+<% if @product.errors.present? %>
+    $('.errors').html('<%= render 'shared/errors', resource: @product %>');
+<%else%>
+    $('.notice').append('<%= "the product has been successfully updated"%>');
+    $('.product' + <%=@product.id%>+ '_info').html("<%=  j render @product %>")
+    $('form#edit-product-'+<%=@product.id%>).addClass('hidden');
+<%end%>

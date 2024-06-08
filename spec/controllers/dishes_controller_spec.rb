@@ -65,6 +65,10 @@ RSpec.describe DishesController, type: :controller do
     end
   end
 
+  describe 'PATCH #update' do
+
+  end
+
 
   describe 'DELETE #destroy' do 
 

@@ -1,0 +1,21 @@
+= "#{product.title} #{product.brand_name}" 
+
+table.table.table-bordered
+  thead
+    tr
+      th scope="col" Protein
+      th scope="col" Fat
+      th scope="col" Carbohydrate
+      th scope="col" Calories
+  
+
+  tbody
+      tr
+        td #{product.protein}
+        td #{product.fat}
+        td #{product.carbohydrate}
+        td #{product.calorie}
+
+= link_to "edit", "#", remote: true,  data: {product_id: product.id}, class: "product_edit_link"
+
+=render 'products/edit_form', product: product

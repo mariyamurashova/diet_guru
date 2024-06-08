@@ -1,6 +1,6 @@
-div class="input-group mb-3 products_form"
+div class="input-group mb-3 products_edit_form"
 
-  = form_with model: product, multipart: true, class: "hidden", local: false, html: { id: "add-new-product"}  do |form|
+  = form_with model: product, multipart: true, class: "hidden", local: false, html: { id: "edit-product-#{product.id}"}  do |form|
   
     = form.label :title, "Title"
      
@@ -23,5 +23,5 @@ div class="input-group mb-3 products_form"
     = form.label :carbohydrate
     = form.number_field :carbohydrate, class: "form-control" 
     br
-    = form.submit 'Save Product', class: "btn btn-secondary add-new-product-btn" 
+    = form.submit 'Save Product', class: "btn btn-secondary update-product-btn" 
     br =

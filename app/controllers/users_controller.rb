@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @product = Product.new
+    @products = Product.all
     @dish = Dish.new
     @dishes = current_user.dishes
   end

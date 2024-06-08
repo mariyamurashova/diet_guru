@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ProductsController, type: :controller do
   let(:user) { create(:user) }
+  let(:product) { create(:product) }
 
   describe 'POST #create' do 
 
@@ -42,6 +43,28 @@ RSpec.describe ProductsController, type: :controller do
       it 'redirects to sign in' do  
           post :create, params: { product: attributes_for(:product), format: :json }
         expect(response).to have_http_status(:unauthorized)
+      end
+    end
+  end
+
+  describe 'PATCH #update' do
+   
+    before { login(user) }
+
+    context 'with valid attributes' do 
+      it "changes product's attributes" do
+        patch :update, params: { id: product, product: {title: 'new product', brand_name: product.brand_name, 
+                                calorie: product.calorie, protein: product.protein, fat: product.fat, 
+                                carbohydrate: product.carbohydrate} }, format: :js
+        product.reload
+        expect(product.title).to eq 'new product'
+      end
+
+      it 'returns status 200 OK' do
+        patch :update, params: { id: product, product: {title: 'new product', brand_name: product.brand_name, 
+                                calorie: product.calorie, protein: product.protein, fat: product.fat, 
+                                carbohydrate: product.carbohydrate} }, format: :js
+        expect(response).to have_http_status(200)
       end
     end
   end

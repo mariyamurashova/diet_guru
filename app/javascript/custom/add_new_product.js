@@ -1,6 +1,7 @@
 import $ from "jquery";
 $(document).ready(function(){
-  $('.user_account').on('click', '.add-new-product-link', function(e){
+  $('.create_product').on('click', '.add-new-product-link', function(e){
+    console.log("create product")
     e.preventDefault();
     $(this).addClass('hidden');
     $('form#add-new-product').removeClass('hidden');

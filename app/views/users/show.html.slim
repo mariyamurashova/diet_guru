@@ -11,7 +11,9 @@
           = link_to "Delete Photo", image_path(current_user.image), method: :delete, data: {  confirm: ('Are you sure?'), remote: true }, id: "delete_photo_link", class: "hidden"
              
         div class = "row" 
-          h3 = link_to 'Add new product', '#', class: 'add-new-product-link'   
+          div class = "create_product"
+            h3 = link_to 'Add new product', '#', class: 'add-new-product-link'  
+
           h3 = link_to 'Add new dish', "#", class: 'add-new-dish-link'
 
       div class = "col"
@@ -22,7 +24,17 @@
               li = link_to dish.title, dish_path(dish)    
         
         = render 'users/edit_form', user: current_user
-
+        
+    
         = render 'products/form', product: @product
 
         = render 'dishes/form', dish: @dish
+
+      div class = "col"
+        .products
+          h3 = "Products"
+          - @products.each do |product|
+            li = link_to "#{product.title} #{product.brand_name}", "#", remote:true, data: {product_id: product.id}, class: "product-info-link" 
+            div class = "product#{product.id}_info hidden"
+              = render 'products/product', product: product
+          
