@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe DishesController, type: :controller do
   let!(:user) { create(:user) }
   let!(:dish) { create(:dish, user: user) }
-  
+  let!(:product) { create(:product) }
+  let!(:dish_ingredient) { create(:dish_ingredient, product:product, dish:dish) }
    describe 'POST #create' do 
 
     context 'Authenticated user' do
@@ -66,9 +67,23 @@ RSpec.describe DishesController, type: :controller do
   end
 
   describe 'PATCH #update' do
+    before { login(user) }
 
+    context 'with valid attributes' do 
+      it "changes dish's attributes" do
+        patch :update, params: { id: dish, dish: {title: 'new dish', number_of_servings: dish.number_of_servings, 
+                                dish_ingredients_attributes: [:id, :product_id, :weight, :_destroy]} }, format: :js
+        dish.reload
+        expect(dish.title).to eq 'new dish'
+      end
+
+      it 'returns status 200 OK' do
+        patch :update, params: { id: dish, dish: {title: 'new dish', number_of_servings: dish.number_of_servings, 
+                                dish_ingredients_attributes: [:id, :product_id, :weight, :_destroy]} }, format: :js
+        expect(response).to have_http_status(200)
+      end
+    end
   end
-
 
   describe 'DELETE #destroy' do 
 
