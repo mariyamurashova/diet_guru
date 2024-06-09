@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      render json: { text: "the new product has been successfully created"}, status: :created
+      render json: { product: @product.title, text: "the new product has been successfully created"}, status: :created
     else
       render json: @product.errors.full_messages, status: :bad_request
     end

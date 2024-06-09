@@ -20,8 +20,8 @@ window.jQuery = jquery
 window.$ = jquery
 console.log("jquery")
 
-//import "select2";
-//console.log("select2")
+import "select2";
+console.log("select2")
 
 
 

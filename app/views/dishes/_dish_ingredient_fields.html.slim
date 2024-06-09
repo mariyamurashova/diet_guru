@@ -1,6 +1,6 @@
 = cocooned_item do
   .nested-fields
-    = f.select :product_id, Product.render_title, {:include_blank => 'Choose Ingredient'}, class: "form-control", id: "select_ingredient"
+    = f.select :product_id, Product.render_title, class: "select2_ingredient form-control", id: "select_ingredient"
     = f.label :weight, class: "ingredient-weight form-control"
     = f.number_field :weight, class: "form-control"
   = cocooned_remove_item_link 'delete', f

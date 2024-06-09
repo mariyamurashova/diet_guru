@@ -14,10 +14,13 @@ feature 'User can add new dish', %q{
       sign_in(user)
       click_on "My Account"
       click_on "Add new dish"
+     
     end
 
     scenario 'create a dish with valid attributes', js:true do 
+
       within ".dishes_form" do
+        #byebug
         fill_in "Title", with: 'My dish'
         fill_in 'Number of servings', with: '2'
         click_on 'add ingredient'

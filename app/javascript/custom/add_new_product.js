@@ -8,12 +8,15 @@ $(document).ready(function(){
   })
 
   .on('click', '.add-new-product-btn', function(e){
+    console.log("click on save product")
     $('form#add-new-product').addClass('hidden');
     $('.add-new-product-link').removeClass('hidden');  
   })
 
   .on('ajax:success', function(e) { 
     console.log(e.detail[0])
+    render_message(e.detail[0]['text']);
+    append_product_link(e.detail[0]['product'])
     render_message(e.detail[0]['text']);
     })
   
@@ -34,6 +37,14 @@ $(document).ready(function(){
     $.each(errors, function(index, value) {
       $('.errors').append('<p>' + value + '</p>');
     })
+  }
+
+  function append_product_link(product_title) {
+    let aTag = document.createElement('a'); 
+    aTag.innerHTML='<li>'+product_title +'</li>';
+
+    aTag.href=product_title;
+    $('.products').append(aTag);
   }
 
 });

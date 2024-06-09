@@ -2,7 +2,7 @@ div class="input-group mb-3 dishes_form"
 
   = form_with model: dish, multipart: true, class: "hidden", local: false,  html: { id: "add-new-dish"}  do |form|
     = form.label :title  
-    = form.text_area :title, class: "form-control" 
+    = form.text_area :title, class: "dish_title form-control" 
 
     = form.label :number_of_servings
     = form.number_field :number_of_servings, class: "form-control"
@@ -20,4 +20,3 @@ div class="input-group mb-3 dishes_form"
     br =
     = form.submit 'Save', class: "btn btn-secondary add-new-dish-btn" 
     br =
-s

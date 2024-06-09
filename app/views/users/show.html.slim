@@ -12,24 +12,20 @@
              
         div class = "row" 
           div class = "create_product"
-            h3 = link_to 'Add new product', '#', class: 'add-new-product-link'  
-
-          h3 = link_to 'Add new dish', "#", class: 'add-new-dish-link'
+            h3 = link_to 'Add new product', '#', class: 'add-new-product-link' 
+            = render 'products/form', product: @product 
 
       div class = "col"
         .user_dishes
+          h3 = link_to 'Add new dish', "#", class: 'add-new-dish-link'
           h3 = "Your recepies:"
           -@dishes.each do |dish|
             .dish_info_links
-              li = link_to dish.title, dish_path(dish)    
+              li = link_to dish.title, dish_path(dish)   
+          = render 'dishes/form', dish: @dish 
         
         = render 'users/edit_form', user: current_user
         
-    
-        = render 'products/form', product: @product
-
-        = render 'dishes/form', dish: @dish
-
       div class = "col"
         .products
           h3 = "Products"

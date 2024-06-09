@@ -1,6 +1,10 @@
 import $ from "jquery";
+import "select2"
 $(document).ready(function(){
-$('.user_account').on('click', '.add-new-dish-link', function(e){
+
+$('.select2_ingredient').select2();
+
+$('.user_dishes').on('click', '.add-new-dish-link', function(e){
    
     e.preventDefault();
     $(this).addClass('hidden');
