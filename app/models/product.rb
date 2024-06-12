@@ -4,8 +4,8 @@ class Product < ApplicationRecord
 
   has_many :dishes, through: :dish_ingredients
 
-  validates_presence_of :title, :calorie, :protein, :fat, :carbohydrate, :brand_name
-  validates_uniqueness_of :title, scope: :brand_name, message: "this product already exists"
+  validates :title, :calorie, :protein, :fat, :carbohydrate, :brand_name, presence: true
+  validates :title, uniqueness: { scope: :brand_name, message: "this product already exists" }
 
   scope :render_title, -> { order(:title, :brand_name).map { |product| [product.title, product.id] } }
   

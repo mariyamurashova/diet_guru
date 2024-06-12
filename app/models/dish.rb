@@ -4,6 +4,6 @@ class Dish < ApplicationRecord
   belongs_to :user
   accepts_nested_attributes_for :dish_ingredients, reject_if: :all_blank, allow_destroy: true
 
-  validates_presence_of :title, :number_of_servings
+  validates :title, :number_of_servings, presence: true
 
 end
